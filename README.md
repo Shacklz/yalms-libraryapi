@@ -1,0 +1,1 @@
+A little bit of an experimental project, a library system with neo4j as db.
