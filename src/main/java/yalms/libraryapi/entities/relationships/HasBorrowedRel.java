@@ -1,4 +1,4 @@
-package yalms.libraryapi.entities.relationship;
+package yalms.libraryapi.entities.relationships;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;

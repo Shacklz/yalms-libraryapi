@@ -1,8 +1,8 @@
 package yalms.libraryapi.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import yalms.libraryapi.entities.AbstractBook;
-import yalms.libraryapi.entities.Book;
+import yalms.libraryapi.entities.nodes.AbstractBook;
+import yalms.libraryapi.entities.nodes.Book;
 import yalms.libraryapi.repositories.AbstractBookRepository;
 import yalms.libraryapi.repositories.BookRepository;
 

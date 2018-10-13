@@ -1,7 +1,7 @@
 package yalms.libraryapi.controllers;
 
 import org.springframework.web.bind.annotation.*;
-import yalms.libraryapi.entities.LibraryUser;
+import yalms.libraryapi.entities.nodes.LibraryUser;
 import yalms.libraryapi.repositories.LibraryUserRepository;
 
 @RestController
