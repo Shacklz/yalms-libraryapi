@@ -14,4 +14,12 @@ public class HasBorrowedRel {
     private Long id;
 
     private LocalDateTime borrowDate;
+
+    public LocalDateTime getBorrowDate() {
+        return borrowDate;
+    }
+
+    public void setBorrowDate(LocalDateTime borrowDate) {
+        this.borrowDate = borrowDate;
+    }
 }

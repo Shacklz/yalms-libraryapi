@@ -18,4 +18,21 @@ public class LibraryUser {
 
     @Relationship(type = "HAS_BORROWED", direction = Relationship.OUTGOING)
     private Set<Book> borrowedBooks;
+
+    public Set<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(Set<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

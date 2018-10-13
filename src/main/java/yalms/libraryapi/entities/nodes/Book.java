@@ -5,6 +5,8 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.time.LocalDate;
+
 @NodeEntity
 public class Book {
 
@@ -12,7 +14,7 @@ public class Book {
     @GeneratedValue
     private Long id;
 
-    private Boolean available;
+    private LocalDate addedToLibraryDate;
 
     @Relationship(type = "INSTANCE_OF_ABSTRACTBOOK", direction = Relationship.OUTGOING)
     private AbstractBook abstractBook;
@@ -28,14 +30,6 @@ public class Book {
         this.abstractBook = abstractBook;
     }
 
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        available = available;
-    }
-
     public LibraryUser getBorrower() {
         return borrower;
     }
@@ -43,4 +37,13 @@ public class Book {
     public void setBorrower(LibraryUser borrower) {
         this.borrower = borrower;
     }
+
+    public LocalDate getAddedToLibraryDate() {
+        return addedToLibraryDate;
+    }
+
+    public void setAddedToLibraryDate(LocalDate addedToLibraryDate) {
+        this.addedToLibraryDate = addedToLibraryDate;
+    }
+
 }
