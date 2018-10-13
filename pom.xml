@@ -25,7 +25,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-neo4j</artifactId>
+            <artifactId>spring-data-neo4j</artifactId>4j
         </dependency>
     </dependencies>
 
