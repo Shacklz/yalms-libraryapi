@@ -5,6 +5,7 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @NodeEntity
@@ -15,6 +16,7 @@ public class LibraryUser {
     private Long id;
 
     private String name;
+    private LocalDate memberSinceDate;
 
     @Relationship(type = "HAS_BORROWED", direction = Relationship.OUTGOING)
     private Set<Book> borrowedBooks;
@@ -35,4 +37,11 @@ public class LibraryUser {
         this.name = name;
     }
 
+    public LocalDate getMemberSinceDate() {
+        return memberSinceDate;
+    }
+
+    public void setMemberSinceDate(LocalDate memberSinceDate) {
+        this.memberSinceDate = memberSinceDate;
+    }
 }

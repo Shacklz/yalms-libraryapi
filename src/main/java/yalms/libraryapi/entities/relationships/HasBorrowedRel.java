@@ -1,8 +1,8 @@
 package yalms.libraryapi.entities.relationships;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.RelationshipEntity;
+import org.neo4j.ogm.annotation.*;
+import yalms.libraryapi.entities.nodes.Book;
+import yalms.libraryapi.entities.nodes.LibraryUser;
 
 import java.time.LocalDateTime;
 
@@ -12,6 +12,12 @@ public class HasBorrowedRel {
     @Id
     @GeneratedValue
     private Long id;
+
+    @StartNode
+    LibraryUser borrower;
+
+    @EndNode
+    Book borrowedBook;
 
     private LocalDateTime borrowDate;
 
