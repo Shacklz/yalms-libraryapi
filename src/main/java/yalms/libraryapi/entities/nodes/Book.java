@@ -1,18 +1,13 @@
 package yalms.libraryapi.entities.nodes;
 
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+import yalms.libraryapi.entities.nodes.multilabel.LibraryItem;
 
 import java.time.LocalDate;
 
 @NodeEntity
-public class Book {
-
-    @Id
-    @GeneratedValue
-    private Long id;
+public class Book extends LibraryItem {
 
     private LocalDate addedToLibraryDate;
 

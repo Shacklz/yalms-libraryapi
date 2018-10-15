@@ -1,10 +1,12 @@
 package yalms.libraryapi.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import yalms.libraryapi.entities.nodes.AbstractBook;
 import yalms.libraryapi.entities.nodes.Book;
 import yalms.libraryapi.repositories.AbstractBookRepository;
 import yalms.libraryapi.repositories.BookRepository;
+import yalms.libraryapi.services.LibraryItemIdService;
 
 import java.time.LocalDate;
 
@@ -12,13 +14,10 @@ import java.time.LocalDate;
 @RequestMapping("/book")
 public class BookController {
 
-    BookRepository bookRepository;
-    AbstractBookRepository abstractBookRepository;
-
-    public BookController(BookRepository bookRepository, AbstractBookRepository abstractBookRepository) {
-        this.bookRepository = bookRepository;
-        this.abstractBookRepository = abstractBookRepository;
-    }
+    @Autowired
+    LibraryItemIdService libraryItemIdService;
+    @Autowired BookRepository bookRepository;
+    @Autowired AbstractBookRepository abstractBookRepository;
 
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public Book addBook(@RequestBody Book book, @RequestParam(value = "abstractBookId") Long abstractBookId) {
@@ -27,6 +26,7 @@ public class BookController {
         if(book.getAddedToLibraryDate() == null) {
             book.setAddedToLibraryDate(LocalDate.now());
         }
+        book.setUniqueLibraryItemNumber(libraryItemIdService.getNewUniqueLibraryItemId());
         return bookRepository.save(book);
     }
 
