@@ -14,14 +14,13 @@ import java.time.LocalDate;
 @RequestMapping("/book")
 public class BookController {
 
-    @Autowired
-    LibraryItemIdService libraryItemIdService;
+    @Autowired LibraryItemIdService libraryItemIdService;
     @Autowired BookRepository bookRepository;
     @Autowired AbstractBookRepository abstractBookRepository;
 
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
-    public Book addBook(@RequestBody Book book, @RequestParam(value = "abstractBookId") Long abstractBookId) {
-        AbstractBook abstractBook = abstractBookRepository.findById(abstractBookId).get();
+    public Book addBook(@RequestBody Book book, @RequestParam(value = "bookISBN13") String bookISBN13) {
+        AbstractBook abstractBook = abstractBookRepository.findByBookISBN13(bookISBN13);
         book.setAbstractBook(abstractBook);
         if(book.getAddedToLibraryDate() == null) {
             book.setAddedToLibraryDate(LocalDate.now());
