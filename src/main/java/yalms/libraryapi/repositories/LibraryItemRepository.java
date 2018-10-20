@@ -8,4 +8,6 @@ public interface LibraryItemRepository extends Neo4jRepository<LibraryItem, Long
 
     @Query("MATCH (libItem: LibraryItem) return max(libItem.uniqueLibraryItemNumber)")
     public Long getCurrentMaxId();
+
+    public LibraryItem findByUniqueLibraryItemNumber(Long uniqueLibraryItemNumber);
 }

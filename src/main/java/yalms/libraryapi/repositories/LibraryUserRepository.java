@@ -7,4 +7,6 @@ import yalms.libraryapi.entities.nodes.LibraryUser;
 public interface LibraryUserRepository extends Neo4jRepository<LibraryUser, Long> {
     @Query("MATCH (libUser: LibraryUser) return max(libUser.libraryUserId)")
     public Long getCurrentMaxId();
+
+    public LibraryUser findByLibraryUserId(Long libraryUserId);
 }
