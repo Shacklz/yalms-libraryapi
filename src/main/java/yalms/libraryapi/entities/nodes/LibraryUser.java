@@ -15,11 +15,21 @@ public class LibraryUser {
     @GeneratedValue
     private Long id;
 
+    private Long libraryUserId;
+
     private String name;
     private LocalDate memberSinceDate;
 
     @Relationship(type = "HAS_BORROWED", direction = Relationship.OUTGOING)
     private Set<Book> borrowedBooks;
+
+    public Long getLibraryUserId() {
+        return libraryUserId;
+    }
+
+    public void setLibraryUserId(Long libraryUserId) {
+        this.libraryUserId = libraryUserId;
+    }
 
     public Set<Book> getBorrowedBooks() {
         return borrowedBooks;

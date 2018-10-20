@@ -6,7 +6,7 @@ import yalms.libraryapi.entities.nodes.AbstractBook;
 import yalms.libraryapi.entities.nodes.Book;
 import yalms.libraryapi.repositories.AbstractBookRepository;
 import yalms.libraryapi.repositories.BookRepository;
-import yalms.libraryapi.services.LibraryItemIdService;
+import yalms.libraryapi.services.UniqueIdService;
 
 import java.time.LocalDate;
 
@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @RequestMapping("/book")
 public class BookController {
 
-    @Autowired LibraryItemIdService libraryItemIdService;
+    @Autowired UniqueIdService uniqueIdService;
     @Autowired BookRepository bookRepository;
     @Autowired AbstractBookRepository abstractBookRepository;
 
@@ -25,7 +25,7 @@ public class BookController {
         if(book.getAddedToLibraryDate() == null) {
             book.setAddedToLibraryDate(LocalDate.now());
         }
-        book.setUniqueLibraryItemNumber(libraryItemIdService.getNewUniqueLibraryItemId());
+        book.setUniqueLibraryItemNumber(uniqueIdService.getNewUniqueLibraryItemId());
         return bookRepository.save(book);
     }
 
