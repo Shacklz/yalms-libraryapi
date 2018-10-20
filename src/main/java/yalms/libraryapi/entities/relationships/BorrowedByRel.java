@@ -6,12 +6,12 @@ import yalms.libraryapi.entities.nodes.multilabel.LibraryItem;
 
 import java.time.LocalDateTime;
 
-@RelationshipEntity(type = "HAS_BORROWED")
-public class HasBorrowedRel {
+@RelationshipEntity(type = "BORROWED_BY")
+public class BorrowedByRel {
 
-    public HasBorrowedRel() {}
+    public BorrowedByRel() {}
 
-    public HasBorrowedRel(LibraryUser borrower, LibraryItem libraryItem) {
+    public BorrowedByRel(LibraryUser borrower, LibraryItem libraryItem) {
         this.borrower = borrower;
         this.libraryItem = libraryItem;
     }
@@ -21,10 +21,10 @@ public class HasBorrowedRel {
     private Long id;
 
     @StartNode
-    LibraryUser borrower;
+    LibraryItem libraryItem;
 
     @EndNode
-    LibraryItem libraryItem;
+    LibraryUser borrower;
 
     private LocalDateTime borrowDate;
 

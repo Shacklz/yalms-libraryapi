@@ -4,7 +4,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import yalms.libraryapi.entities.relationships.HasBorrowedRel;
+import yalms.libraryapi.entities.relationships.BorrowedByRel;
 
 @NodeEntity
 public abstract class LibraryItem {
@@ -15,8 +15,8 @@ public abstract class LibraryItem {
 
     private Long uniqueLibraryItemNumber;
 
-    @Relationship(type = "HAS_BORROWED", direction = Relationship.INCOMING)
-    private HasBorrowedRel borrowedByRel;
+    @Relationship(type = "BORROWED_BY", direction = Relationship.OUTGOING)
+    private BorrowedByRel borrowedByRel;
 
     public Long getUniqueLibraryItemNumber() {
         return uniqueLibraryItemNumber;
@@ -26,11 +26,11 @@ public abstract class LibraryItem {
         this.uniqueLibraryItemNumber = uniqueLibraryItemNumber;
     }
 
-    public HasBorrowedRel getBorrowedByRel() {
+    public BorrowedByRel getBorrowedByRel() {
         return borrowedByRel;
     }
 
-    public void setBorrowedByRel(HasBorrowedRel borrowedByRel) {
+    public void setBorrowedByRel(BorrowedByRel borrowedByRel) {
         this.borrowedByRel = borrowedByRel;
     }
 }

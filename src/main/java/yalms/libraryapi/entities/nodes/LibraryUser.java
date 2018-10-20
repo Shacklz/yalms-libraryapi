@@ -4,7 +4,7 @@ import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import yalms.libraryapi.entities.relationships.HasBorrowedRel;
+import yalms.libraryapi.entities.relationships.BorrowedByRel;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,8 +21,8 @@ public class LibraryUser {
     private String name;
     private LocalDate memberSinceDate;
 
-    @Relationship(type = "HAS_BORROWED", direction = Relationship.OUTGOING)
-    private Set<HasBorrowedRel> borrowedLibraryItemsRels;
+    @Relationship(type = "BORROWED_BY", direction = Relationship.INCOMING)
+    private Set<BorrowedByRel> borrowedLibraryItemsRels;
 
     public Long getLibraryUserId() {
         return libraryUserId;
@@ -32,11 +32,11 @@ public class LibraryUser {
         this.libraryUserId = libraryUserId;
     }
 
-    public Set<HasBorrowedRel> getBorrowedLibraryItemsRels() {
+    public Set<BorrowedByRel> getBorrowedLibraryItemsRels() {
         return borrowedLibraryItemsRels;
     }
 
-    public void setBorrowedLibraryItemsRels(Set<HasBorrowedRel> borrowedLibraryItemsRels) {
+    public void setBorrowedLibraryItemsRels(Set<BorrowedByRel> borrowedLibraryItemsRels) {
         this.borrowedLibraryItemsRels = borrowedLibraryItemsRels;
     }
 

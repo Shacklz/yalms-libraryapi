@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import yalms.libraryapi.entities.nodes.LibraryUser;
 import yalms.libraryapi.entities.nodes.multilabel.LibraryItem;
-import yalms.libraryapi.entities.relationships.HasBorrowedRel;
+import yalms.libraryapi.entities.relationships.BorrowedByRel;
 import yalms.libraryapi.repositories.LibraryItemRepository;
 import yalms.libraryapi.repositories.LibraryUserRepository;
 
@@ -22,15 +22,15 @@ public class BorrowService {
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean borrowLibraryItem(Long libraryUserId, Long uniqueLibraryItemNumber) {
         boolean success = false;
-        LibraryUser libraryUser = libraryUserRepository.findByLibraryUserId(libraryUserId);
-        LibraryItem libraryItem = libraryItemRepository.findByUniqueLibraryItemNumber(uniqueLibraryItemNumber);
-        success = libraryUser != null && libraryItem != null;
+        LibraryUser borrower = libraryUserRepository.findByLibraryUserId(libraryUserId);
+        LibraryItem borrowItem = libraryItemRepository.findByUniqueLibraryItemNumber(uniqueLibraryItemNumber);
+        success = borrower != null && borrowItem != null;
         if (success) {
-            HasBorrowedRel hasBorrowedRel = new HasBorrowedRel(libraryUser, libraryItem);
-            hasBorrowedRel.setBorrowDate(LocalDateTime.now());
-            libraryItem.setBorrowedByRel(hasBorrowedRel);
+            BorrowedByRel borrowedByRel = new BorrowedByRel(borrower, borrowItem);
+            borrowedByRel.setBorrowDate(LocalDateTime.now());
+            borrowItem.setBorrowedByRel(borrowedByRel);
         }
-        libraryItemRepository.save(libraryItem);
+        libraryItemRepository.save(borrowItem);
         return success;
     }
 
