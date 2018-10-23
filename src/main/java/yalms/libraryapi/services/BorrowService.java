@@ -2,7 +2,6 @@ package yalms.libraryapi.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import yalms.libraryapi.entities.nodes.LibraryUser;
 import yalms.libraryapi.entities.nodes.multilabel.LibraryItem;
@@ -13,13 +12,12 @@ import yalms.libraryapi.repositories.LibraryUserRepository;
 import java.time.LocalDateTime;
 
 @Service
-@Transactional(propagation = Propagation.SUPPORTS)
 public class BorrowService {
 
-    @Autowired LibraryItemRepository libraryItemRepository;
-    @Autowired LibraryUserRepository libraryUserRepository;
+    @Autowired private LibraryItemRepository libraryItemRepository;
+    @Autowired private LibraryUserRepository libraryUserRepository;
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional
     public boolean borrowLibraryItem(Long libraryUserId, Long uniqueLibraryItemNumber) {
         boolean success = false;
         LibraryUser borrower = libraryUserRepository.findByLibraryUserId(libraryUserId);
@@ -34,7 +32,7 @@ public class BorrowService {
         return success;
     }
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Transactional
     public boolean bringBackLibraryItem(Long uniqueLibraryItemNumber) {
         boolean success = false;
         LibraryItem libraryItem = libraryItemRepository.findByUniqueLibraryItemNumber(uniqueLibraryItemNumber);

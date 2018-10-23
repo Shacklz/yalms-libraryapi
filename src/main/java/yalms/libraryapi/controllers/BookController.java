@@ -14,9 +14,9 @@ import java.time.LocalDate;
 @RequestMapping("/book")
 public class BookController {
 
-    @Autowired UniqueIdService uniqueIdService;
-    @Autowired BookRepository bookRepository;
-    @Autowired AbstractBookRepository abstractBookRepository;
+    @Autowired private UniqueIdService uniqueIdService;
+    @Autowired private BookRepository bookRepository;
+    @Autowired private AbstractBookRepository abstractBookRepository;
 
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public Book addBook(@RequestBody Book book, @RequestParam(value = "bookISBN13") String bookISBN13) {

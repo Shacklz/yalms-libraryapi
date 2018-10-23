@@ -11,7 +11,7 @@ import yalms.libraryapi.services.BorrowService;
 @RequestMapping("/borrowAction")
 public class BorrowActionController {
 
-    @Autowired BorrowService borrowService;
+    @Autowired private BorrowService borrowService;
 
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public Boolean borrowLibraryItem(@RequestParam(value = "libraryUserId") Long libraryUserId, @RequestParam(value = "uniqueLibraryItemNumber") Long uniqueLibraryItemNumber) {

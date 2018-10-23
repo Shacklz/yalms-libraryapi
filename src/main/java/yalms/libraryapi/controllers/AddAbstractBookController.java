@@ -1,5 +1,6 @@
 package yalms.libraryapi.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import yalms.libraryapi.entities.nodes.AbstractBook;
 import yalms.libraryapi.repositories.AbstractBookRepository;
@@ -8,11 +9,7 @@ import yalms.libraryapi.repositories.AbstractBookRepository;
 @RequestMapping("/abstractBook")
 public class AddAbstractBookController {
 
-    AbstractBookRepository abstractBookRepository;
-
-    public AddAbstractBookController(AbstractBookRepository abstractBookRepository) {
-        this.abstractBookRepository = abstractBookRepository;
-    }
+    @Autowired private AbstractBookRepository abstractBookRepository;
 
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public AbstractBook addAbstractBook(@RequestBody AbstractBook abstractBook) {

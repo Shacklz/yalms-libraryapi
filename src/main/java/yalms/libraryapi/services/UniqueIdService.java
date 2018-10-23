@@ -7,11 +7,9 @@ import yalms.libraryapi.repositories.LibraryUserRepository;
 
 @Service
 public class UniqueIdService {
-    @Autowired
-    LibraryItemRepository libraryItemRepository;
 
-    @Autowired
-    LibraryUserRepository libraryUserRepository;
+    @Autowired private LibraryItemRepository libraryItemRepository;
+    @Autowired private LibraryUserRepository libraryUserRepository;
 
     public Long getNewUniqueLibraryItemId() {
         Long currentMax = libraryItemRepository.getCurrentMaxId();

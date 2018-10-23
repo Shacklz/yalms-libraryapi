@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @RequestMapping("/libraryUser")
 public class LibraryUserController {
 
-    @Autowired UniqueIdService uniqueIdService;
-    @Autowired LibraryUserRepository libraryUserRepository;
+    @Autowired private UniqueIdService uniqueIdService;
+    @Autowired private LibraryUserRepository libraryUserRepository;
 
     @PostMapping(path = "/add", consumes = "application/json", produces = "application/json")
     public LibraryUser addLibraryUser(@RequestBody LibraryUser libraryUser) {
