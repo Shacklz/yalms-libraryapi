@@ -27,8 +27,8 @@ public class BorrowService {
             BorrowedByRel borrowedByRel = new BorrowedByRel(borrower, borrowItem);
             borrowedByRel.setBorrowDate(LocalDateTime.now());
             borrowItem.setBorrowedByRel(borrowedByRel);
+            // libraryItemRepository.save(borrowItem);
         }
-        libraryItemRepository.save(borrowItem);
         return success;
     }
 
@@ -39,7 +39,7 @@ public class BorrowService {
         success = libraryItem != null;
         if (success) {
             libraryItem.setBorrowedByRel(null);
-            libraryItemRepository.save(libraryItem);
+            // libraryItemRepository.save(libraryItem);
         }
         return success;
     }
